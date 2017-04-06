@@ -2,8 +2,76 @@
 <html>
 <head>
     <title>TouharFang - IS183 Midterm</title>
+     <link rel="stylesheet" type="text/css" href="./css/main.css">
+
+    <style>
+        .error-message {
+            display:none;
+            color:#CCC;
+            border:1px solid yellow;
+            background-color:darkred;
+            width:100%;
+            border-radius:5px;
+            margin-top:15px;
+            min-height:50px;
+        }
+        .error-message p {
+            line-height:50px;
+            font-weight:bold;
+            color:#FFF;
+            padding:0 0 0 20px;
+        }
+        #login-wrapper {
+            background-image:url('./images/loginBackground.jpg');
+            background-size:cover;
+        }
+    </style>
 </head>
 <body>
-    <!-- html comment -->
+    <div class="wrapper" id="login-wrapper">
+        <header class="main-header box-shadow">
+            <h1>Touhar Fang</h1>
+        </header>
+        <section class="content-bottom one-column">
+            <article class="main-content one-column-content">
+                <div class="login-form box-shadow">
+                    <h1>Login</h1>
+                    <div id="login-form">
+                        <label for="username">Username</label>
+                        <input class="login-input" type="email" name="username" id="username">
+                        <label for="password">Password</label>
+                        <input class="login-input" type="password" name="password" id="password">
+                        <button type="submit" class="login-button" id="login" onclick="login()">Login</button>
+                    </div>
+                    <div id="error-container" class="error-message"><p id="error-message">Login error!</p></div>
+                </div>
+            </article>
+        </section>
+        <footer class="footer box-shadow">
+            <p class="copyright">
+                (c) Created by Touhar Fang
+            </p>
+        </footer>
+    </div>
+    <script>
+     function login() {
+         console.log('loggedin...');
+        let username = document.getElementById('username').value;
+        let password = document.getElementById('password').value;
+        let errorContainer = document.getElementById('error-container');
+        let errorMessage = document.getElementById('error-message');
+        if(username == 'Touhar' && password == 'Fang') {
+              location.href = './home/home.html';  
+        } else {
+            errorContainer.style.display = 'block';
+            errorMessage.innerHTML = 'Login error. Please try again...';
+            let handle = setInterval(() => {
+                errorContainer.style.display = 'none';
+                clearInterval(handle);
+            }, 2000);
+        }
+     }
+
+    </script>
 </body>
 </html>
